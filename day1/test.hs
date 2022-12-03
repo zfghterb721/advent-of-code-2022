@@ -21,6 +21,7 @@ main = do
   print groups_summed
   print maximum
   print bigGuy
+  print (sumArray (grabfirst 3 (fakeQuicksort groups_summed)))
 
 maxNum :: Ord a => [a] -> a
 maxNum [x] = x
@@ -33,3 +34,15 @@ findIndex i (x:xs) = if x == i then 0 else 1 + findIndex i xs
 sumArray :: [Integer] -> Integer
 sumArray [] = 0
 sumArray (x:xs) = x + sumArray xs
+
+fakeQuicksort :: [Integer] -> [Integer]
+fakeQuicksort [] = []
+fakeQuicksort (x:xs) = 
+    let small = fakeQuicksort [a | a <- xs, a >= x] 
+        big = fakeQuicksort [a | a <- xs, a < x]
+    in  small ++ [x] ++ big
+
+grabfirst :: Integer->[Integer]->[Integer]
+grabfirst _ [] = []
+grabfirst 0 _ = []
+grabfirst a (x:xs) = x : grabfirst (a-1) xs
