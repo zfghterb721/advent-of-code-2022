@@ -2,7 +2,6 @@ import Data.Text.IO (readFile)
 import Data.Text (Text, pack, splitOn)
 import Data.Text.Read (decimal)
 import Data.Either
-import Distribution.Compat.Lens (_1)
 
 
 main = do
